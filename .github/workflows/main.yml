@@ -1,0 +1,31 @@
+name: "test webhook trigger"                # CHANGE <product_name>
+#----------  TRIGGERS  ------------------------------------
+on:
+  push:
+    branches: [ main,release ]
+#   paths:                                        # If there is more than on product in the repo, define the path to the code bellow
+#   - some/dir1/**                                # Optional: triggers when changes detected in some/dir
+#   - some/dir2/*.xxx                             # Optional: triggers when changes detected in xxx files inside some/dir
+
+#  pull_request:
+#    branches: [ main,release ]
+#   paths:                                        # If there is more than on product in the repo, define the path to the code bellow
+#   - some/dir1/**                                # Optional: triggers when changes detected in some/dir
+#   - some/dir2/*.xxx                             # Optional: triggers when changes detected in xxx files inside some/dir
+  workflow_dispatch:
+    inputs:
+      Run:                                        # This is just enable the option to trigger the Workflow manually
+        description: Enable Code Scan
+        type: choice
+        default: On
+        options:
+        - On
+#######################   DO NOT CHANGE BELOW THIS LINE   #######################
+
+jobs:
+  run-scan:
+    runs-on: ubuntu-latest
+    steps:
+    #----------------------------------------
+    - name: Checkout
+      uses: actions/checkout@v3
