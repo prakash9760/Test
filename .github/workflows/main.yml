@@ -4,8 +4,9 @@ on:
   push:
     branches: [ main,release ]
   workflow_dispatch:
-#######################   DO NOT CHANGE BELOW THIS LINE   #######################
-
+  repository_dispatch:
+    types: hot-deploy
+    
 jobs:
   run-scan:
     runs-on: ubuntu-latest
