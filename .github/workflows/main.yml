@@ -4,9 +4,14 @@ on:
   push:
     branches: [ main,release ]
   workflow_dispatch:
-  repository_dispatch:
-    types: hot-deploy
-    
+    inputs:
+      synopsys_project_id: 
+        required: true 
+        type: string        
+      artifact_path: 
+        required: true 
+        type: string
+        
 jobs:
   run-scan:
     runs-on: ubuntu-latest
