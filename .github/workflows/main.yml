@@ -19,3 +19,10 @@ jobs:
     #----------------------------------------
     - name: Checkout
       uses: actions/checkout@v3
+    #----------------------------------------
+    - name: print inputs
+      shell: bash
+      run: |
+        echo "project_id: ${{ github.event.inputs.synopsys_project_id}}"
+        echo "artifact_path: ${{ github.event.inputs.artifact_path}}"
+        
